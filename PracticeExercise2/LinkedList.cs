@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace PracticeExercise2
 {
 
@@ -121,9 +124,12 @@ namespace PracticeExercise2
 
         public void InsertAfter(T newValue, T existingValue)
         {
-
-            length++;
-
+            //while ( existingValue != null )
+            //{
+            //    var newNode = new LinkedListNode<T>(newValue);
+            //    newNode.Next = existingValue.Next;
+            //    existingValue.Next = newNode;
+            //}
             throw new NotImplementedException();
         }
 
@@ -242,15 +248,44 @@ namespace PracticeExercise2
 
         public void RemoveAt(int index)
         {
+            var currentNode = Head;
+            int currentIndex = 0;
 
+            while (currentNode != null)
+            {
+                // find the node at index - 1
+                if (currentIndex == index - 1)
+                {
+                    // insert the new node
+                    var newNode = Head;
+                    newNode.Next = currentNode.Next;
+                    currentNode.Next = newNode;
+
+                    if (currentNode == Tail)
+                    {
+                        Tail = newNode;
+                    }
+
+                    length--;
+                }
+
+                currentNode = currentNode.Next;
+                currentIndex--;
+            }
             // length--;
-
-            throw new NotImplementedException();
         }
 
         public IList<T> Reverse()
         {
+            //var reversedList = IList.;
+            //// reversedList is IEnumerable<int>
+            //// 'list' and 'ilist' are not changed
+
+            //foreach (int item in reversedList)
+            //    Console.Write(item);
+
             throw new NotImplementedException();
+
         }
 
         public override string ToString()
